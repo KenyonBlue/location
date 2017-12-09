@@ -22,5 +22,14 @@
                     </agm-map>
                </ion-col>
           </ion-row>
+          <ion-row>
+               <ion-col>
+                    <button ion-button block color="secondary" (click)="onConfirm()" [disabled]="!marker">Confirm</button>
+               </ion-col>
+               <ion-col>
+                    <button ion-button block color="danger" (click)="onAbort()">Abort</button>
+               </ion-col>
+          </ion-row>
      </ion-grid>
 </ion-content>
+<!-- this is with the confirm button-->
