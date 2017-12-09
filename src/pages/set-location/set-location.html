@@ -1,20 +1,26 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Choose Location</ion-title>
-  </ion-navbar>
+     <ion-navbar>
+          <ion-title>Choose Location</ion-title>
+     </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-<ion-grid>
-     <ion-row>
-          <ion-col>
-               <agm-map [latitude]="lat" [longitude]="lng">
-  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-</agm-map>
-          </ion-col>
-     </ion-row>
-</ion-grid>
+     <ion-grid>
+          <ion-row>
+               <ion-col>
+                    <h1>{{Title}}</h1>
+               </ion-col>
+          </ion-row>
+          <ion-row>
+               <ion-col>
+                    <agm-map [latitude]="location.lat" [longitude]="location.lng" [zoom]="16" (mapClick)="onSetMarker($event)">
+                         <agm-marker [latitude]="marker.lat" [longitude]="marker.lng" *ngIf="marker"></agm-marker>
+
+                    </agm-map>
+               </ion-col>
+          </ion-row>
+     </ion-grid>
 </ion-content>
