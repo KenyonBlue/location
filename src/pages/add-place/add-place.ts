@@ -4,7 +4,7 @@ import { NgForm } from "@angular/forms";
 import { SetLocationPage } from "../set-location/set-location";
 import { Location } from "../../models/location";
 import { Geolocation } from "@ionic-native/geolocation";
-import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Camera } from '@ionic-native/camera';
 
 
 
@@ -21,6 +21,8 @@ export class AddPlacePage {
      };
      
      locationIsSet = false;
+     public base64Image: string;
+
      
      constructor(private modalCtrl: ModalController, public geolocation: Geolocation,private camera: Camera, private loadingCtrl: LoadingController, private toastCtrl: ToastController){}
      
@@ -72,21 +74,18 @@ export class AddPlacePage {
        
      
      onTakePhoto() {
-        const options: CameraOptions = {
-  quality: 100,
-  destinationType: this.camera.DestinationType.DATA_URL,
-  encodingType: this.camera.EncodingType.JPEG,
-  mediaType: this.camera.MediaType.PICTURE
+       this.camera.getPicture({
+        destinationType: this.camera.DestinationType.DATA_URL,
+         
+    }).then((imageData) => {
+      
+        this.base64Image = "data:image/jpeg;base64," + imageData;
+            
+            
+    }, (err) => {
+        console.log(err);
+    });
+
 }
-        this.camera.getPicture(options).then((imageData) => {
-             console.log(imageData);
- // imageData is either a base64 encoded string or a file URI
- // If it's base64:
-// let base64Image = 'data:image/jpeg;base64,' + imageData;
-}, (err) => {
- console.log(err);
-});
-        
-     }
 
 }
