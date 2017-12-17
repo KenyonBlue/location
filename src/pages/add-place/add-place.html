@@ -36,7 +36,7 @@
                </ion-row>
                <ion-row *ngIf="locationIsSet">
                     <ion-col>
-                         <agm-map [latitude]="location.lat" [longitude]="location.lng" [zoom]="16" (mapClick)="onSetMarker($event)">
+                         <agm-map [latitude]="location.lat" [longitude]="location.lng" [zoom]="6" (mapClick)="onSetMarker($event)">
                               <agm-marker [latitude]="location.lat" [longitude]="location.lng"></agm-marker>
                          </agm-map>
                     </ion-col>

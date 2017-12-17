@@ -11,19 +11,19 @@ import { Location } from "../../models/location";
 export class SetLocationPage {
 
           marker: Location;
-          location: Location = {
-           lat:  37.983929,
-          lng:  -84.529081
-     
-     };
+          location: Location;
+
      
      
-//      title: string = 'My first AGM project';
-//  lat: number = 37.983929;
-//  lng: number = -84.529081;
+//      title: string = 'My first AGM project'
+
      
   constructor( public navParams: NavParams, private viewCtrl: ViewController) {
        this.location = this.navParams.get('location');
+       if (this.navParams.get('isSet')){
+            this.marker = this.location;
+       }
+       
   }
      
      onSetMarker(event: any){
