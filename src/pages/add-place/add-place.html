@@ -54,7 +54,7 @@
                          </button>
                     </ion-col>
                </ion-row>
-               <ion-row>
+               <ion-row *ngIf="base64Image != ''">
                     <ion-col>
                          <img [src]="base64Image" *ngIf="base64Image" />
                     </ion-col>
